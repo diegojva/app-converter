@@ -8,10 +8,8 @@ import util.CurrencyUtil;
 import util.TemperatureUtil;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Objects;

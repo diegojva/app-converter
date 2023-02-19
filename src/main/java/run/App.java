@@ -8,9 +8,7 @@ import entity.Currency;
 import entity.Temperature;
 
 import javax.swing.*;
-import java.awt.*;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 

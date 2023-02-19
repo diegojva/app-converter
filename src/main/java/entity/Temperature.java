@@ -1,7 +1,6 @@
 package entity;
 
 import lombok.Data;
-import service.CurrencyConverter;
 import service.TemperatureConverter;
 
 import java.math.BigDecimal;

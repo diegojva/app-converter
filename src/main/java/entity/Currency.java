@@ -2,7 +2,6 @@ package entity;
 
 import lombok.Data;
 import service.CurrencyConverter;
-import service.impl.ConverterImpl;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
