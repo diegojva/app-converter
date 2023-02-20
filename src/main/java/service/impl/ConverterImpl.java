@@ -10,8 +10,8 @@ import java.math.RoundingMode;
 
 public class ConverterImpl implements CurrencyConverter, TemperatureConverter {
 
-    private static final Currency currency = new Currency(new ConverterImpl());
-    private static final Temperature temperature = new Temperature(new ConverterImpl());
+    private static Currency currency = new Currency(new ConverterImpl());
+    private static Temperature temperature = new Temperature(new ConverterImpl());
 
     @Override
     public BigDecimal convertSolesToDolares(BigDecimal amount) {
@@ -100,4 +100,5 @@ public class ConverterImpl implements CurrencyConverter, TemperatureConverter {
         }
         return null;
     }
+
 }

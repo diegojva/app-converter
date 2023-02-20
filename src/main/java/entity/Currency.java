@@ -15,7 +15,7 @@ public class Currency {
     private final CurrencyConverter currencyConverter;
     private final Map<String, Function<BigDecimal, BigDecimal>> CURRENCY_CONVERTER = new HashMap<>();
 
-    public Currency(CurrencyConverter currencyConverter){
+     public Currency(CurrencyConverter currencyConverter){
         this.currencyConverter = currencyConverter;
         CURRENCY_CONVERTER.put("De Soles a Dolares", currencyConverter::convertSolesToDolares);
         CURRENCY_CONVERTER.put("De Soles a Euros", currencyConverter::convertSolesToEuros);
@@ -34,4 +34,5 @@ public class Currency {
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().apply(amount)));
     }
+
 }

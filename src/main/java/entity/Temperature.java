@@ -26,11 +26,11 @@ public class Temperature {
         TEMPERATURE_CONVERTER.put("De Kelvin a Fahrenheit", currencyConverter::convertKelvinToFahrenheit);
     }
 
+
     public Map<String, BigDecimal> getTemperatureConverter() {
         return TEMPERATURE_CONVERTER.entrySet()
                 .stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().apply(value)));
     }
-
 
 }

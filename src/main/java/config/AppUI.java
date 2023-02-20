@@ -3,7 +3,7 @@ package config;
 import enums.CurrencySymbol;
 import enums.TemperatureSymbol;
 import lombok.Data;
-import run.App;
+
 import service.impl.ConverterImpl;
 import util.CurrencyUtil;
 import util.TemperatureUtil;
@@ -21,11 +21,9 @@ public class AppUI {
     static DecimalFormat df = new DecimalFormat("#,###.##");
     static BigDecimal moneyInput = new BigDecimal("0.00");
     static BigDecimal temperatureInput = new BigDecimal("1");
-    static String[] currencyOptions = App.getCurrencyOptions();
-    static String[] temperatureOptions = App.getTemperatureOptions();
+    static String[] currencyOptions = CurrencyUtil.getCurrencyOptions();
+    static String[] temperatureOptions = TemperatureUtil.getTemperatureOptions();
     public static boolean userWantsToExit = false;
-    static CurrencyUtil currencySymbol = new CurrencyUtil();
-    static TemperatureUtil temperatureSymbol = new TemperatureUtil();
 
     private static JPanel configMenu(JComboBox<String> comboBox, JLabel label) {
         configStyleApp();
@@ -112,7 +110,7 @@ public class AppUI {
         if(typeResult.equals("currency")){
             String selectedCurrencyText = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
             BigDecimal resultAmount = ConverterImpl.convertInputValue("currency",inputValue, selectedCurrencyText);
-            currencySymbol.getCurrencySymbol().forEach((key, value) -> {
+            CurrencyUtil.getCurrencySymbol().forEach((key, value) -> {
                 if (key.equals(selectedCurrencyText)) {
                     showSimpleMessage("Tienes " + value + " " + df.format(resultAmount) + " " + CurrencySymbol.getValueByKey(value));
                 }
@@ -122,7 +120,7 @@ public class AppUI {
         else if(typeResult.equals("temperature")){
             String selectedTemperatureText = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
             BigDecimal result = ConverterImpl.convertInputValue("temperature",inputValue, selectedTemperatureText);
-            temperatureSymbol.getTemperatureSymbol().forEach((key, value) -> {
+            TemperatureUtil.getTemperatureSymbol().forEach((key, value) -> {
                 if (key.equals(selectedTemperatureText)) {
                     showSimpleMessage("Temperatura " + value + " " + result + " " + TemperatureSymbol.getValueByKey(value));
                 }

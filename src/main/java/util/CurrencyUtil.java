@@ -1,27 +1,31 @@
 package util;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 public class CurrencyUtil {
 
-    private final Map<String, String> CURRENCY_SYMBOL = new HashMap<>();
+    private static final Map<String, String> CURRENCY_SYMBOL = Map.ofEntries(
+            Map.entry("De Soles a Dolares", "$"),
+            Map.entry("De Soles a Euros", "€"),
+            Map.entry("De Soles a Libras Esterlinas", "£"),
+            Map.entry("De Soles a Yen Japónes", "¥"),
+            Map.entry("De Soles a Won sur-coreano", "₩"),
+            Map.entry("De Dolares a Soles", "S/"),
+            Map.entry("De Euros a Soles", "S/"),
+            Map.entry("De Libras Esterlinas a Soles", "S/"),
+            Map.entry("De Yen Japónes a Soles", "S/"),
+            Map.entry("De Won sur-coreano a Soles", "S/")
+    );
 
-    public CurrencyUtil(){
-        CURRENCY_SYMBOL.put("De Soles a Dolares", "$");
-        CURRENCY_SYMBOL.put("De Soles a Euros", "€");
-        CURRENCY_SYMBOL.put("De Soles a Libras Esterlinas", "£");
-        CURRENCY_SYMBOL.put("De Soles a Yen Japónes", "¥");
-        CURRENCY_SYMBOL.put("De Soles a Won sur-coreano", "₩");
-        CURRENCY_SYMBOL.put("De Dolares a Soles", "S/");
-        CURRENCY_SYMBOL.put("De Euros a Soles", "S/");
-        CURRENCY_SYMBOL.put("De Libras Esterlinas a Soles", "S/");
-        CURRENCY_SYMBOL.put("De Yen Japónes a Soles", "S/");
-        CURRENCY_SYMBOL.put("De Won sur-coreano a Soles", "S/");
+    public static Map<String, String> getCurrencySymbol() {
+        return CURRENCY_SYMBOL;
     }
 
-    public Map<String, String> getCurrencySymbol() {
-        return CURRENCY_SYMBOL;
+
+    public static String[] getCurrencyOptions(){
+        List<String> keys = new ArrayList<>(CURRENCY_SYMBOL.keySet());
+        return keys.toArray(new String[0]);
     }
 
 }
