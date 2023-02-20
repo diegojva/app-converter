@@ -29,29 +29,14 @@ public class App {
                     AppUI.showSimpleMessage("Programa terminado");
                     break;
                 }
-
-            }
-            if (resultSelection == 0) {
+            }else if(resultSelection == 0) {
                 AppUI.showMenuHome(resultSelection, COMBO_BOX_STARTED);
                 if (AppUI.userWantsToExit) {
                     AppUI.showSimpleMessage("Programa terminado");
                     break;
                 }
             }
-
         } while (!AppUI.userWantsToExit);
-    }
-
-    public static BigDecimal convertInputValue(String typeConverter, String inputValue, String valueType) {
-        if(typeConverter.equals("currency")){
-            currency.setAmount(new BigDecimal(inputValue));
-            return currency.getCurrencyConverter().get(valueType);
-        }
-        else if(typeConverter.equals("temperature")){
-            temperature.setValue(new BigDecimal(inputValue));
-            return temperature.getTemperatureConverter().get(valueType);
-        }
-        return null;
     }
 
     public static String[] getCurrencyOptions(){

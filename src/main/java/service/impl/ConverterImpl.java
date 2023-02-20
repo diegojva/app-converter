@@ -1,5 +1,7 @@
 package service.impl;
 
+import entity.Currency;
+import entity.Temperature;
 import service.CurrencyConverter;
 import service.TemperatureConverter;
 
@@ -7,6 +9,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class ConverterImpl implements CurrencyConverter, TemperatureConverter {
+
+    private static final Currency currency = new Currency(new ConverterImpl());
+    private static final Temperature temperature = new Temperature(new ConverterImpl());
 
     @Override
     public BigDecimal convertSolesToDolares(BigDecimal amount) {
@@ -82,5 +87,17 @@ public class ConverterImpl implements CurrencyConverter, TemperatureConverter {
     @Override
     public BigDecimal convertKelvinToFahrenheit(BigDecimal kelvin) {
         return kelvin.multiply(new BigDecimal("9")).divide(new BigDecimal("5")).subtract(new BigDecimal("459.67"));
+    }
+
+    public static BigDecimal convertInputValue(String typeConverter, String inputValue, String valueType) {
+        if(typeConverter.equals("currency")){
+            currency.setAmount(new BigDecimal(inputValue));
+            return currency.getCurrencyConverter().get(valueType);
+        }
+        else if(typeConverter.equals("temperature")){
+            temperature.setValue(new BigDecimal(inputValue));
+            return temperature.getTemperatureConverter().get(valueType);
+        }
+        return null;
     }
 }

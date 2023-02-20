@@ -4,6 +4,7 @@ import enums.CurrencySymbol;
 import enums.TemperatureSymbol;
 import lombok.Data;
 import run.App;
+import service.impl.ConverterImpl;
 import util.CurrencyUtil;
 import util.TemperatureUtil;
 
@@ -110,7 +111,7 @@ public class AppUI {
         df.setMinimumFractionDigits(2);
         if(typeResult.equals("currency")){
             String selectedCurrencyText = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
-            BigDecimal resultAmount = App.convertInputValue("currency",inputValue, selectedCurrencyText);
+            BigDecimal resultAmount = ConverterImpl.convertInputValue("currency",inputValue, selectedCurrencyText);
             currencySymbol.getCurrencySymbol().forEach((key, value) -> {
                 if (key.equals(selectedCurrencyText)) {
                     showSimpleMessage("Tienes " + value + " " + df.format(resultAmount) + " " + CurrencySymbol.getValueByKey(value));
@@ -120,7 +121,7 @@ public class AppUI {
         }
         else if(typeResult.equals("temperature")){
             String selectedTemperatureText = Objects.requireNonNull(comboBox.getSelectedItem()).toString();
-            BigDecimal result = App.convertInputValue("temperature",inputValue, selectedTemperatureText);
+            BigDecimal result = ConverterImpl.convertInputValue("temperature",inputValue, selectedTemperatureText);
             temperatureSymbol.getTemperatureSymbol().forEach((key, value) -> {
                 if (key.equals(selectedTemperatureText)) {
                     showSimpleMessage("Temperatura " + value + " " + result + " " + TemperatureSymbol.getValueByKey(value));
